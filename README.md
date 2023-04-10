@@ -1,2 +1,5 @@
-# event-manager-vue
-Simple app to manage events.
+# Event-Manager-Vue
+
+## Description
+
+Simple one page app used as a CRUD interface for other project event-manager.
