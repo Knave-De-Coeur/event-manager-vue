@@ -9,7 +9,7 @@ lerna-debug.log*
 
 node_modules
 .DS_Store
-dist
+src/dist
 dist-ssr
 coverage
 *.local
@@ -27,7 +27,7 @@ coverage
 *.sln
 *.sw?
 
-/dist
+/src/dist
 
 # local env files
 .env.local

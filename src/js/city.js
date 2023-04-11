@@ -22,6 +22,7 @@ export default function cityCRUD() {
 
     const storeCity = async (data) => {
         try {
+            console.log("sending data", data);
             await axios.post("/city", data);
             await router.push({name: "CityView"})
         } catch (error) {
