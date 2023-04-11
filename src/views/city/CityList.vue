@@ -1,25 +1,20 @@
-<template>
-<div class="city-table">
-    <ul>
-        <li v-for="city in cities" key="city.id">
-            {{ city.name }}
-        </li>
-    </ul>
-</div>
-</template>
-
-<script>
+<script setup>
 import cityCRUD from "@/js/city";
 import {onMounted} from "vue";
 
 const {cities, getCities} = cityCRUD();
 
 onMounted(() => getCities())
-
-export default {
-    name: "CityVue"
-}
 </script>
+<template>
+    <div>
+        <ul>
+            <li v-for="city in cities" :key="city.id">
+                {{ city.name }}
+            </li>
+        </ul>
+    </div>
+</template>
 
 <style scoped>
 

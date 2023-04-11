@@ -2,7 +2,7 @@ import {ref} from "vue";
 import axios from 'axios'
 import {useRouter} from "vue-router";
 
-axios.default.BASE_URL = 'http://localhost:8080'
+axios.defaults.baseURL = 'http://localhost:8080'
 
 export default function cityCRUD() {
 
@@ -13,11 +13,11 @@ export default function cityCRUD() {
 
     const getCities = async () => {
         const response = await axios.get("/cities");
-        cities.value = response.data.data;
+        cities.value = response.data;
     }
     const getCity = async (id) => {
         const response = await axios.get("/city/" + id);
-        city.value = response.data.data;
+        city.value = response.data;
     }
 
     const storeCity = async (data) => {
