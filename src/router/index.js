@@ -10,6 +10,17 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/event/create',
+      name: 'EventCreate',
+      component: () => import('../views/event/EventCreate.vue')
+    },
+    {
+      path: '/event/:id/edit',
+      name: 'EventEdit',
+      component: () => import('../views/event/EventEdit.vue'),
+      props: true,
+    },
+    {
       path: '/city',
       name: 'CityList',
       component: () => import('../views/city/CityList.vue')
