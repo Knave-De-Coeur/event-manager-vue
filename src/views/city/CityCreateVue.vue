@@ -38,15 +38,14 @@
                   <input
                           id="capital"
                           type="checkbox"
-                          value=""
                           v-model="form.capital"
                           class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800">
               </div>
               <label for="capital" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Capital City? </label>
           </div>
           <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add</button>
-          <div v-if="errors.message">
-              <span>{{errors.message}}</span>
+          <div v-if="errors.value">
+              <span>{{errors.value.message}}</span>
           </div>
       </form>
 
@@ -63,7 +62,7 @@ const form = reactive({
         name: "",
         population: 0,
         size: 0,
-        capital: false,
+        capital: 0,
     })
 </script>
 

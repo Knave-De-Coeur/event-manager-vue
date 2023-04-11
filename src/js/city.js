@@ -22,20 +22,17 @@ export default function cityCRUD() {
 
     const storeCity = async (data) => {
         try {
-            console.log("sending data", data);
             await axios.post("/city", data);
-            await router.push({name: "CityView"})
+            await router.push({name: "CityList"})
         } catch (error) {
-            if (error.response.status === 422) {
-                errors.value = error.response.data.errors;
-            }
+            errors.value = error;
         }
     }
 
     const editCity = async (id) => {
         try {
             await axios.put("/city/" + id, city.value);
-            await router.push({name: "CityView"})
+            await router.push({name: "CityList"})
         } catch (error) {
             if (error.response.status === 422) {
                 errors.value = error.response.data.errors;
