@@ -15,19 +15,31 @@ const router = createRouter({
       component: () => import('../views/city/CityList.vue')
     },
     {
-      path: '/city/{{id}}}',
-      name: 'CityView',
-      component: () => import('../views/city/CityView.vue')
-    },
-    {
       path: '/city/create',
       name: 'CityCreate',
       component: () => import('../views/city/CityCreateVue.vue')
     },
     {
-      path: '/city/{{id}}/edit',
+      path: '/city/:id/edit',
       name: 'CityEdit',
-      component: () => import('../views/city/CityCreateVue.vue')
+      component: () => import('../views/city/CityEdit.vue'),
+      props: true,
+    },
+    {
+      path: '/category',
+      name: 'CategoryList',
+      component: () => import('../views/category/CategoryList.vue')
+    },
+    {
+      path: '/category/create',
+      name: 'CategoryCreate',
+      component: () => import('../views/category/CategoryCreate.vue')
+    },
+    {
+      path: '/category/:id/edit',
+      name: 'CategoryEdit',
+      component: () => import('../views/category/CategoryEdit.vue'),
+      props: true,
     },
   ]
 })

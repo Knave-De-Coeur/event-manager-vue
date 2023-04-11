@@ -8,8 +8,8 @@ import { RouterLink, RouterView } from 'vue-router'
         <nav class="m-2 p-2">
             <RouterLink class="px-4 py-2 mr-4 bg-indigo-600 hover:bg-indigo-800 rounded text-white"  to="/">Home</RouterLink>
             <RouterLink class="px-4 py-2 mr-4 bg-indigo-600 hover:bg-indigo-800 rounded text-white" to="/city">City</RouterLink>
-            <RouterLink class="px-4 py-2 mr-4 bg-indigo-600 hover:bg-indigo-800 rounded text-white" to="/city">Categories</RouterLink>
-            <RouterLink class="px-4 py-2 mr-4 bg-indigo-600 hover:bg-indigo-800 rounded text-white" to="/city">Events</RouterLink>
+            <RouterLink class="px-4 py-2 mr-4 bg-indigo-600 hover:bg-indigo-800 rounded text-white" to="/category">Categories</RouterLink>
+<!--            <RouterLink class="px-4 py-2 mr-4 bg-indigo-600 hover:bg-indigo-800 rounded text-white" to="/events">Events</RouterLink>-->
         </nav>
     </div>
   </header>

@@ -34,9 +34,7 @@ export default function cityCRUD() {
             await axios.put("/city/" + id, city.value);
             await router.push({name: "CityList"})
         } catch (error) {
-            if (error.response.status === 422) {
-                errors.value = error.response.data.errors;
-            }
+            errors.value = error;
         }
     }
 
@@ -46,11 +44,9 @@ export default function cityCRUD() {
                 return;
             }
             await axios.delete("/city/" + id);
-            await router.push({name: "CityList"})
+            await getCities();
         } catch (error) {
-            if (error.response.status === 422) {
-                errors.value = error.response.data.errors;
-            }
+            errors.value = error;
         }
     }
 

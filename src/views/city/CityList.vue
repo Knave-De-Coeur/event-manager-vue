@@ -1,12 +1,12 @@
 <template>
 <div class="mt-12">
-    <dev class="mt-12">
+    <div class="mt-12">
         <div class="flex justify-end m-2 p-2">
             <RouterLink
                 :to="{ name: 'CityCreate' }"
             >Create City</RouterLink>
         </div>
-    </dev>
+    </div>
     <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -33,7 +33,8 @@
                     {{ city.capital }}
                 </td>
                 <td class="px-6 py-4">
-                    Edit/Delete
+                    <RouterLink :to="{name:'CityEdit', params:{id: city.id}}">Edit</RouterLink>
+                    <button @click="deleteCity(city.id)">Delete</button>
                 </td>
             </tr>
             </tbody>
@@ -45,7 +46,7 @@
 import cityCRUD from "@/js/city";
 import {onMounted} from "vue";
 
-const {cities, getCities} = cityCRUD();
+const {cities, getCities, deleteCity} = cityCRUD();
 
 onMounted(() => getCities())
 </script>
