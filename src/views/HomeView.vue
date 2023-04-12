@@ -12,10 +12,12 @@
               <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                   <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                   <tr>
-                      <th scope="col" class="px-6 py-3">Event Id</th>
+                      <th scope="col" class="px-6 py-3">Id</th>
                       <th scope="col" class="px-6 py-3">Event Name</th>
                       <th scope="col" class="px-6 py-3">Organizer</th>
+                      <th scope="col" class="px-6 py-3">Categories</th>
                       <th scope="col" class="px-6 py-3">Description</th>
+                      <th scope="col" class="px-6 py-3">City</th>
                       <th scope="col" class="px-6 py-3">Start</th>
                       <th scope="col" class="px-6 py-3">End</th>
                       <th scope="col" class="px-6 py-3">Action</th>
@@ -33,7 +35,18 @@
                           {{ event.organizer }}
                       </td>
                       <td class="px-6 py-4">
+                          <RouterLink
+                              v-for="(category, index) in event.category_names"
+                              :to="{name:'CategoryEdit', params:{id: event.category_ids[index]}}"
+                          >
+                              {{ category }}
+                          </RouterLink>
+                      </td>
+                      <td class="px-6 py-4">
                           {{ event.description }}
+                      </td>
+                      <td class="px-6 py-4">
+                          <RouterLink :to="{name:'CityEdit', params:{id: event.city_id}}">{{ event.city_name }}</RouterLink>
                       </td>
                       <td class="px-6 py-4">
                           {{ event.time_start }}
