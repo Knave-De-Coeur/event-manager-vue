@@ -13,11 +13,11 @@ export default function cityCRUD() {
 
     const getCities = async () => {
         const response = await axios.get("/cities");
-        cities.value = response.data;
+        cities.value = response.data.body;
     }
     const getCity = async (id) => {
         const response = await axios.get("/city/" + id);
-        city.value = response.data;
+        city.value = response.data.body;
     }
 
     const storeCity = async (data) => {

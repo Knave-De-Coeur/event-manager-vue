@@ -13,11 +13,11 @@ export default function eventCRUD() {
 
     const getEvents = async () => {
         const response = await axios.get("/events");
-        events.value = response.data;
+        events.value = response.data.body;
     }
     const getEvent = async (id) => {
         const response = await axios.get("/event/" + id);
-        event.value = response.data;
+        event.value = response.data.body;
     }
 
     const storeEvent = async (data) => {

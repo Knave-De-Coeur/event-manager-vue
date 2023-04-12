@@ -13,11 +13,11 @@ export default function categoryCRUD() {
 
     const getCategories = async () => {
         const response = await axios.get("/categories");
-        categories.value = response.data;
+        categories.value = response.data.body;
     }
     const getCategory = async (id) => {
         const response = await axios.get("/category/" + id);
-        category.value = response.data;
+        category.value = response.data.body;
     }
 
     const storeCategory = async (data) => {
