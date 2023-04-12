@@ -26,7 +26,12 @@
                         {{ category.name }}
                     </th>
                     <td class="px-6 py-4">
-                        {{ category.parent_id }}
+                        <div v-if="category.parent_id">
+                            {{ category.parent_name }}
+                        </div>
+                        <div v-else>
+                            No Parent
+                        </div>
                     </td>
                     <td class="px-6 py-4">
                         <RouterLink :to="{name:'CategoryEdit', params:{id: category.id}}">Edit</RouterLink>
