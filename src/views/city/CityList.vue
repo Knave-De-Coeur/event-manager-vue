@@ -43,6 +43,9 @@
             </tr>
             </tbody>
         </table>
+        <div v-if="errors.value">
+            <span>{{errors.value.message}}</span>
+        </div>
     </div>
 </div>
 </template>
@@ -50,7 +53,7 @@
 import cityCRUD from "@/js/city";
 import {onMounted} from "vue";
 
-const {cities, getCities, deleteCity} = cityCRUD();
+const {cities, getCities, deleteCity, errors} = cityCRUD();
 
 onMounted(() => getCities())
 </script>

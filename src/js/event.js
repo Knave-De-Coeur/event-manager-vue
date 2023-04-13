@@ -40,8 +40,9 @@ export default function eventCRUD() {
 
     const storeEvent = async (data) => {
         try {
-            data.time_start = moment(String(data.time_start)).format('YYYY/MM/DD hh:mm;ss')
-            data.time_end = moment(String(data.time_end)).format('YYYY/MM/DD hh:mm;ss')
+            console.log("event" + data);
+            // data.time_start = moment(String(data.time_start)).format('YYYY/MM/DD hh:mm;ss')
+            // data.time_end = moment(String(data.time_end)).format('YYYY/MM/DD hh:mm;ss')
             await axios.post("/event", data);
             await router.push({name: "home"})
         } catch (error) {
