@@ -1,15 +1,21 @@
 <template>
 <div class="mt-12">
-    <div class="mt-12">
-        <div class="flex justify-end m-2 p-2">
-            <RouterLink
-                :to="{ name: 'CityCreate' }"
-            >Create City</RouterLink>
+    <div class="mt-12 flex align-middle">
+        <div class="flex-1 m-2 p-2">
+            <h1 class="bold">Cities</h1>
+        </div>
+        <div class="flex-1 m-2 p-2">
+            <div class="flex justify-end">
+                <RouterLink
+                    :to="{ name: 'CityCreate' }"
+                    class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 text-white rounded"
+                >Create City</RouterLink>
+            </div>
         </div>
     </div>
     <div class="relative overflow-x-auto">
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table class="w-full text-sm text-left text-white">
+            <thead class="text-xs uppercase bg-gray-50 dark:bg-gray-700">
             <tr>
                 <th scope="col" class="px-6 py-3">City Id</th>
                 <th scope="col" class="px-6 py-3">City Name</th>
@@ -21,12 +27,12 @@
             </thead>
             <tbody>
             <tr v-for="city in cities" :key="city.id"  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <td class="px-6 py-4">
                     {{ city.id }}
-                </th>
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                </td>
+                <td class="px-6 py-4">
                     {{ city.name }}
-                </th>
+                </td>
                 <td class="px-6 py-4">
                     {{ city.population }}
                 </td>
@@ -36,9 +42,14 @@
                 <td class="px-6 py-4">
                     {{ city.capital }}
                 </td>
-                <td class="px-6 py-4">
-                    <RouterLink :to="{name:'CityEdit', params:{id: city.id}}">Edit</RouterLink>
-                    <button @click="deleteCity(city.id)">Delete</button>
+                <td class="px-6 py-4 space-x-2 flex">
+                    <RouterLink
+                        :to="{name:'CityEdit', params:{id: city.id}}"
+                        class="px-2 py-2 bg-green-500 hover:bg-green-700 text-white rounded"
+                    >Edit</RouterLink>
+                    <button
+                        class="px-2 py-2 bg-red-500 hover:bg-red-700 text-white rounded"
+                        @click="deleteCity(city.id)">Delete</button>
                 </td>
             </tr>
             </tbody>

@@ -1,17 +1,22 @@
 <template>
   <main>
       <div class="mt-12">
-          <div class="mt-12">
-              <div class="flex justify-end m-2 p-2">
-                  <RouterLink
+          <div class="mt-12 flex align-middle">
+              <div class="flex-1 m-2 p-2">
+                  <h1 class="bold">Events</h1>
+              </div>
+              <div class="flex-1 m-2 p-2">
+                  <div class="flex justify-end">
+                      <RouterLink
                           :to="{ name: 'EventCreate' }"
                           class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 text-white rounded"
-                  >Create Event</RouterLink>
+                      >Create Event</RouterLink>
+                  </div>
               </div>
           </div>
           <div class="overflow-x-auto relative" bis_skin_checked="1">
-              <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                  <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <table class="w-full text-sm text-left text-white">
+                  <thead class="text-xs text-white uppercase bg-gray-50 dark:bg-gray-700">
                   <tr>
                       <th scope="col" class="px-6 py-3">Id</th>
                       <th scope="col" class="px-6 py-3">Event Name</th>
@@ -55,9 +60,14 @@
                       <td class="px-6 py-4">
                           {{ event.time_end }}
                       </td>
-                      <td class="px-6 py-4">
-                          <RouterLink :to="{name:'EventEdit', params:{id: event.id}}">Edit</RouterLink>
-                          <button @click="deleteEvent(event.id)">Delete</button>
+                      <td class="px-6 py-4 space-x-2 flex">
+                          <RouterLink
+                              :to="{name:'EventEdit', params:{id: event.id}}"
+                              class="px-2 py-2 bg-green-500 hover:bg-green-700 text-white rounded"
+                          >Edit</RouterLink>
+                          <button
+                              class="px-2 py-2 bg-red-500 hover:bg-red-700 text-white rounded"
+                              @click="deleteEvent(event.id)">Delete</button>
                       </td>
                   </tr>
                   </tbody>
