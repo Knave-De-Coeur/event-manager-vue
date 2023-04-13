@@ -30,10 +30,16 @@ export default function eventCRUD() {
     const getEvent = async (id) => {
         const response = await axios.get("/event/" + id);
         let eventBody = response.data.body;
+        console.log(response.data)
         if (eventBody.category_names) {
             let cat_names = eventBody.category_names;
             eventBody.category_names = cat_names.split(',');
         }
+        if (eventBody.category_ids) {
+            let cat_ids = eventBody.category_ids;
+            eventBody.category_ids = cat_ids.split(',');
+        }
+
 
         event.value = eventBody;
     }
