@@ -11,6 +11,12 @@ export default function eventCRUD() {
     const event = ref([]);
     const errors = ref([]);
     const router = useRouter();
+    const datePickerData = ref([
+        {
+            highlight: 'blue',
+            dates: [],
+        },
+    ]);
 
     const getEvents = async () => {
         const response = await axios.get("/events");
@@ -30,25 +36,24 @@ export default function eventCRUD() {
     const getEvent = async (id) => {
         const response = await axios.get("/event/" + id);
         let eventBody = response.data.body;
-        console.log(response.data)
-        if (eventBody.category_names) {
-            let cat_names = eventBody.category_names;
-            eventBody.category_names = cat_names.split(',');
-        }
-        if (eventBody.category_ids) {
-            let cat_ids = eventBody.category_ids;
-            eventBody.category_ids = cat_ids.split(',');
+
+        eventBody.dates = {
+            start: eventBody.time_start,
+            end: eventBody.time_end
         }
 
+        datePickerData.value.dates = [
+            eventBody.time_start,
+            [eventBody.time_start, eventBody.time_end],
+        ]
 
         event.value = eventBody;
     }
 
     const storeEvent = async (data) => {
         try {
-            console.log("event" + data);
-            // data.time_start = moment(String(data.time_start)).format('YYYY/MM/DD hh:mm;ss')
-            // data.time_end = moment(String(data.time_end)).format('YYYY/MM/DD hh:mm;ss')
+            data.time_start = moment(String(data.date.start)).format('YYYY/MM/DD hh:mm;ss')
+            data.time_end = moment(String(data.date.end)).format('YYYY/MM/DD hh:mm;ss')
             await axios.post("/event", data);
             await router.push({name: "home"})
         } catch (error) {
@@ -80,6 +85,7 @@ export default function eventCRUD() {
     return {
         event,
         events,
+        datePickerData,
         getEvents,
         getEvent,
         storeEvent,
