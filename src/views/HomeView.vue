@@ -1,6 +1,7 @@
 <template>
   <main>
       <div class="mt-12">
+          <error-view v-if="eventErrors.response" v-bind:error="eventErrors.response.data"></error-view>
           <div class="mt-12 flex align-middle">
               <div class="flex-1 m-2 p-2">
                   <h1 class="bold">Events</h1>
@@ -79,8 +80,9 @@
 <script setup>
 import {onMounted} from "vue";
 import eventCRUD from "@/js/event";
+import ErrorView from "@/components/ErrorView.vue";
 
-const {events, getEvents, deleteEvent} = eventCRUD();
+const {events, getEvents, deleteEvent, eventErrors} = eventCRUD();
 
 onMounted(() => getEvents())
 </script>

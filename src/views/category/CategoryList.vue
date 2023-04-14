@@ -1,5 +1,6 @@
 <template>
     <div class="mt-12">
+        <error-view v-if="errors.response" v-bind:error="errors.response.data"></error-view>
         <div class="mt-12 flex align-middle">
             <div class="flex-1 m-2 p-2">
                 <h1 class="bold">Categories</h1>
@@ -58,8 +59,9 @@
 <script setup>
 import categoryCRUD from "@/js/category";
 import {onMounted} from "vue";
+import ErrorView from "@/components/ErrorView.vue";
 
-const {categories, getCategories, deleteCategory} = categoryCRUD();
+const {categories, getCategories, deleteCategory, errors} = categoryCRUD();
 
 onMounted(() => getCategories())
 </script>

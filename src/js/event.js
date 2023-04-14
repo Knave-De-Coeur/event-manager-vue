@@ -9,7 +9,7 @@ export default function eventCRUD() {
 
     const events = ref([]);
     const event = ref([]);
-    const errors = ref([]);
+    const eventErrors = ref([]);
     const router = useRouter();
     const datePickerData = ref([
         {
@@ -57,7 +57,7 @@ export default function eventCRUD() {
             await axios.post("/event", data);
             await router.push({name: "home"})
         } catch (error) {
-            errors.value = error;
+            eventErrors.value = error;
         }
     }
 
@@ -66,7 +66,7 @@ export default function eventCRUD() {
             await axios.put("/event/" + id, event.value);
             await router.push({name: "home"})
         } catch (error) {
-            errors.value = error;
+            eventErrors.value = error;
         }
     }
 
@@ -78,7 +78,7 @@ export default function eventCRUD() {
             await axios.delete("/event/" + id);
             await getEvents();
         } catch (error) {
-            errors.value = error;
+            eventErrors.value = error;
         }
     }
 
@@ -91,6 +91,6 @@ export default function eventCRUD() {
         storeEvent,
         editEvent,
         deleteEvent,
-        errors,
+        eventErrors,
     };
 };

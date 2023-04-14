@@ -1,5 +1,6 @@
 <template>
 <div class="mt-12">
+    <error-view v-if="errors.response" v-bind:error="errors.response.data"></error-view>
     <div class="mt-12 flex align-middle">
         <div class="flex-1 m-2 p-2">
             <h1 class="bold">Cities</h1>
@@ -63,6 +64,7 @@
 <script setup>
 import cityCRUD from "@/js/city";
 import {onMounted} from "vue";
+import ErrorView from "@/components/ErrorView.vue";
 
 const {cities, getCities, deleteCity, errors} = cityCRUD();
 
