@@ -43,10 +43,11 @@
                       </td>
                       <td class="px-6 py-4">
                           <RouterLink
+                              class="hover:underline"
                               v-for="(category, index) in event.category_names"
                               :to="{name:'CategoryEdit', params:{id: event.category_ids[index]}}"
                           >
-                              {{ category }}
+                              <div>{{ category }}</div>
                           </RouterLink>
                       </td>
                       <td class="px-6 py-4">
